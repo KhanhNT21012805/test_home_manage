@@ -3,10 +3,10 @@ package com.nnh.model.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "country")
@@ -18,7 +18,7 @@ public class CountryEntity extends BaseEntity{
 	private String name;
 	
 	@OneToMany(mappedBy = "country")
-	private List<CityEntity> cites = new ArrayList<CityEntity>();
+	private List<CityEntity> cities = new ArrayList<CityEntity>();
 
 	public String getCode() {
 		return code;
@@ -37,11 +37,11 @@ public class CountryEntity extends BaseEntity{
 	}
 
 	public List<CityEntity> getCites() {
-		return cites;
+		return cities;
 	}
 
-	public void setCites(List<CityEntity> cites) {
-		this.cites = cites;
+	public void setCites(List<CityEntity> cities) {
+		this.cities = cities;
 	}
 	
 	

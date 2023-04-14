@@ -2,12 +2,12 @@ package com.nnh.model.entity;
 
 import java.util.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "booking")
@@ -31,7 +31,7 @@ public class BookingEntity extends BaseEntity{
 	@JoinColumn(name = "user_id")
 	private UserEntity userBooking;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "department_id")
 	private DepartmentEntity department;
 	

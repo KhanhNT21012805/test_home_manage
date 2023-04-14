@@ -14,7 +14,7 @@
     <!-- navigation -->
     <nav id="navigation" class="menu-nav navbar navbar-expand-lg bg-primary w-100">
         <div class="container-fluid">
-            <a class="navbar-brand" href="">
+            <a class="navbar-brand" th:href="@{/trang-chu}">
                 <img class="logo rounded img-fluid" src="img/thiet-ke-logo-nganh-du-lich-dich-vu-bee-art-07.jpg" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsible-navbar">
@@ -28,7 +28,7 @@
                         <li class="nav-item"><a class="nav-link text-light" href="">Cẩm Nang Du Lịch</a></li>
                     </ul>
                     <div class="col-md-4 text-center text-light" th:if="${session.USERMODEL != null}">
-                    	Welcome, <span style="color:rgb(215,215,215)" th:text="${session.USERMODEL.getFullname}" ></span> | <a class="text-light" th:href="@{logout}" style="text-decoration: none;">Thoát</a>
+                    	Welcome, <a th:href=@{/user} style="color:rgb(215,215,215);text-decoration:none" th:text="${session.USERMODEL.getFullname}" ></a> | <a class="text-light" th:href="@{logout}" style="text-decoration: none;">Thoát</a>
                     </div>
                     <div class="col-md-2 text-center" th:if="${session.USERMODEL == null}">
                     	<a class="text-light" th:href="@{login}" data-toggle="popover" data-placement="bottom" style="text-decoration: none;" data-content=""><i class="fa fa-user-circle px-2" aria-hidden="true"></i> Tài Khoản</a>
@@ -62,7 +62,7 @@
         <h2><b>Kết quả tìm kiếm</b></h2>
         <div class="place-travel py-2 mb-5">
             <div th:each="department : ${departments}" class="place-box mx-2 my-2">
-                <a th:href="@{"><img th:src="${department.thumbnail}" alt="" class="w-100 my-2"></a>
+                <a th:href="@{/can-ho(id=${department.id})}"><img th:src="${department.thumbnail}" alt="" class="w-100 my-2"></a>
                 <span id="place-title"><b th:text="${department.title}"></b></span><br>
                 <span id="place-title" th:text="${department.cityName}"></span><br>
                 <span id="place-title">$<b th:text="${department.price}"></b> - Đêm</span>

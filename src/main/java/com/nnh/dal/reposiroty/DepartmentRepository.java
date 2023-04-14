@@ -15,4 +15,5 @@ public interface DepartmentRepository extends JpaRepository<DepartmentEntity, Lo
 	List<DepartmentEntity> findAll();
 	Page<DepartmentEntity> findAll(Pageable pageable);
 	List<DepartmentEntity> findByCityDepartment(CityEntity cityEntity);
+	DepartmentEntity findOneById(Long id);
 }

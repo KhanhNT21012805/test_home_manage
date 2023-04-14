@@ -9,9 +9,14 @@ public class UserDTO extends AbstractDTO<UserDTO>{
 	private String email;
 	private Integer phoneNum;
 	private String cityName;
+	private String role;
 	
-	
-	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public String getMessage() {
 		return message;
 	}

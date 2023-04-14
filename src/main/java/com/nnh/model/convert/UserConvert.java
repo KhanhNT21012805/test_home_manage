@@ -4,13 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.nnh.dal.reposiroty.CityRepository;
+import com.nnh.dal.reposiroty.RoleRepository;
 import com.nnh.model.dto.UserDTO;
 import com.nnh.model.entity.UserEntity;
 
 @Component
 public class UserConvert {
 	@Autowired
-	private CityRepository cityRep;
+	private RoleRepository roleRep;
 	
 	public static UserEntity toEntity(UserDTO dto) {
 		UserEntity entity = new UserEntity();
@@ -30,6 +31,8 @@ public class UserConvert {
 		dto.setPassword(entity.getPassword());
 		dto.setCityName(entity.getCityUser().getName());
 		dto.setPhoneNum(entity.getPhoneNum());
+		dto.setEmail(entity.getEmail());
+		dto.setCityName(entity.getCityUser().getName());
 		
 		return dto;
 	}

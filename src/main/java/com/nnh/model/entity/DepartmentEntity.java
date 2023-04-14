@@ -1,11 +1,14 @@
 package com.nnh.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "department")
@@ -26,8 +29,21 @@ public class DepartmentEntity extends BaseEntity{
 	@JoinColumn(name = "city_id")
 	private CityEntity cityDepartment;
 	
-	@OneToOne(mappedBy = "department")
-	private BookingEntity booking;
+	@OneToMany(mappedBy = "department")
+	private List<BookingEntity> bookings;
+	
+	@OneToMany(mappedBy = "departmentComment")
+	private List<CommentEntity> comments = new ArrayList<CommentEntity>();
+	
+	
+
+	public List<CommentEntity> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<CommentEntity> comments) {
+		this.comments = comments;
+	}
 
 	public String getTitle() {
 		return title;
@@ -69,13 +85,14 @@ public class DepartmentEntity extends BaseEntity{
 		this.cityDepartment = cityDepartment;
 	}
 
-	public BookingEntity getBooking() {
-		return booking;
+	public List<BookingEntity> getBookings() {
+		return bookings;
 	}
 
-	public void setBooking(BookingEntity booking) {
-		this.booking = booking;
+	public void setBookings(List<BookingEntity> bookings) {
+		this.bookings = bookings;
 	}
+	
 	
 	
 }
