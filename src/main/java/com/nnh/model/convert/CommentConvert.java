@@ -14,7 +14,8 @@ public class CommentConvert {
 		dto.setId(entity.getId());
 		dto.setContent(entity.getContent());
 		dto.setDepartmentId(entity.getDepartmentComment().getId());
-		dto.setUsername(entity.getUserComment().getFullname());
+		dto.setFullname(entity.getUserComment().getFullname());
+		dto.setUsername(entity.getUserComment().getUsername());
 		dto.setCreatedDate(entity.getCreatedDate());
 		
 		return dto;

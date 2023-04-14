@@ -93,14 +93,21 @@ public class Web {
 	@PostMapping("/comment")
 	private String createComment(@ModelAttribute("comment") CommentDTO commentDTO, HttpSession session, @Param("id") Long id) {
 		if(session.getAttribute("USERMODEL") != null) {
-			commentDTO.setUsername(((UserEntity) session.getAttribute("USERMODEL")).getFullname());
+			commentDTO.setUsername(((UserEntity) session.getAttribute("USERMODEL")).getUsername());
 			commentDTO.setDepartmentId(id);
 			commentService.save(commentDTO);
-			return "redirect:/can-ho";
+			return "redirect:/can-ho?id=" + id;
 		}else {
 			return "redirect:/login";
 		}
 	}
+	
+	@GetMapping("/deleteComment")
+	private String deleteComment(@Param("commentId") Long commentId, @Param("id") Long id) {
+		commentService.delete(commentId);
+		return "redirect:/can-ho?id=" + id;
+	}
+
 	
 	@GetMapping("/user")
 	public String getUserPage(HttpSession session, Model model) {

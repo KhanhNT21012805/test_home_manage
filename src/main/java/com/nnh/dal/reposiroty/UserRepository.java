@@ -6,11 +6,10 @@ import org.springframework.security.core.userdetails.User;
 import com.nnh.model.entity.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
-	User findOneByUsername(String username);
+	UserEntity findOneByUsername(String username);
 	UserEntity findOneByEmail(String email);
 	UserEntity findOneByPhoneNum(Integer phoneNum);
 	UserEntity findOneByUsernameAndPassword(String username, String password);
 	UserEntity findOneByFullname(String fullname);
-	
 }
 

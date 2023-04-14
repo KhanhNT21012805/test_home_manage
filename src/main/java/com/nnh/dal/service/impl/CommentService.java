@@ -27,7 +27,7 @@ public class CommentService implements ICommentService{
 	public CommentDTO save(CommentDTO dto) {
 		CommentEntity entity = CommentConvert.toEntity(dto);
 		entity.setDepartmentComment(departmentRep.findById(dto.getDepartmentId()).get());
-		entity.setUserComment(userRep.findOneByFullname(dto.getUsername()));
+		entity.setUserComment(userRep.findOneByUsername(dto.getUsername()));
 		
 		entity = commentRep.save(entity);
 		

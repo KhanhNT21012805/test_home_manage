@@ -115,11 +115,16 @@
                                 <button type="submit" class="text-center btn btn-success">gửi</button>
                             </div>
                         </form>
-                        <div class="bg-light my-2 px-3" th:each="comment : ${comments}" style="width:calc(100% - 80px)">
-                            <span class="text-primary" th:text="${comment.username}"></span>: <span th:text="${comment.content}"></span><a id="deleteComment" class="float-end my-3"><i class="fas fa-trash-alt"></i></a><br/>
-                            <input id="commentId" type="hidden" th:value="${comment.id}">
+                        <div class="bg-light my-2 px-3 py-2" th:each="comment : ${comments}" style="width:calc(100% - 80px)">
+                            <span class="text-primary" th:text="${comment.fullname}"></span>: <span th:text="${comment.content}"></span>
+                            <span th:if="${session.USERMODEL != null}">
+                            	<span th:if="${session.USERMODEL.getUsername == comment.username}">
+                            		<a th:href="@{/deleteComment(commentId=${comment.id}, id=${department.id})}" class="float-end my-3"><i class="fas fa-trash-alt"></i></a>
+                            	</span> 
+                            </span><br/>
                             <span class="text-muted" th:text="${comment.createdDate}"></span>
                         </div>
+
                     </div>
                 </div>
             </div>

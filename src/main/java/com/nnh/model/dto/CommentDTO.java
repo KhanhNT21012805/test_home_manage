@@ -5,7 +5,16 @@ import com.nnh.model.entity.UserEntity;
 public class CommentDTO extends AbstractDTO<CommentDTO>{
 	private String content;
 	private String username;
+	private String fullname;
 	private Long departmentId;
+	
+	
+	public String getFullname() {
+		return fullname;
+	}
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
 	public String getContent() {
 		return content;
 	}

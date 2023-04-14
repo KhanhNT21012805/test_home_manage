@@ -30,7 +30,7 @@ public class UserService implements IUserService{
 		UserEntity entity = UserConvert.toEntity(dto);
 		String messageStr = "";
 		entity.setCityUser(cityRep.findOneByName(dto.getCityName()));
-		entity.setRoles(roleRep.findByCode("USER"));
+		entity.setRoles(roleRep.findByCode("ADMIN"));
 		if(dto.getPassword().equals(dto.getPassword2())) {
 			if(userRep.findOneByUsername(dto.getUsername()) == null) {
 				if(userRep.findOneByEmail(dto.getEmail()) == null) {
